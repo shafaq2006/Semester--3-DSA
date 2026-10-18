@@ -1,48 +1,126 @@
-import java.util.Random;
+package Sorting_Tasks;
 
 public class Bubble_Sort {
 
-    public static void main(String[] args) {
-
-        int[] marks = new int[1000];
-        Random random = new Random();
-        for (int i = 0; i < marks.length; i++) {
-            marks[i] = random.nextInt(101);
-        }
-
-        int comparisons = 0;
-        int swaps = 0;
-
-        for (int i = 0; i < marks.length - 1; i++) {
-            boolean swapped = false;
-
-            for (int j = 0; j < marks.length - i - 1; j++) {
-                comparisons++;
-                if (marks[j] > marks[j + 1]) {
-                    int temp = marks[j];
-                    marks[j] = marks[j + 1];
-                    marks[j + 1] = temp;
-                    swaps++;
-                    swapped = true;
+    public static void bubble_sort(int[] marks){
+        for(int i = 0 ; i < marks.length - 1 ; i++){
+            for(int j = 0 ; j < (marks.length - i - 1) ; j++){
+                if(marks[j] > marks[j+1]){
+                    int dummy = marks[j];
+                    marks[j] = marks[j+1];
+                    marks[j+1] = dummy;
                 }
             }
+        }
+    }
 
-            if (!swapped) {
-                break;
+    public static void printing(int[] marks){
+        System.out.println("Sorted array is :");
+        System.out.print("[");
+        for(int i = 0 ; i < marks.length ; i++){
+            System.out.print(marks[i]);
+            if(i < marks.length - 1){
+                System.out.print(",");
             }
         }
+        System.out.println("]");
+        System.out.println("<==============  Thanks for using =============>");
+    }
 
-        System.out.println("First 20 marks:");
-        for (int i = 0; i < 20; i++) {
-            System.out.print(marks[i] + " ");
-        }
-
-        System.out.println("\nLast 20 marks:");
-        for (int i = marks.length - 20; i < marks.length; i++) {
-            System.out.print(marks[i] + " ");
-        }
-
-        System.out.println("\nComparisons: " + comparisons);
-        System.out.println("Swaps: " + swaps);
+    public static void main(String[] args){
+        System.out.println("You are developing a Student Management System for a university that contains the marks of 1,000 students in an integer array.\nThe marks are randomly assigned between 0 and 100, and your task is to arrange all students' marks in ascending order using the Bubble Sort algorithm.\nCreate an array of size 1,000, populate it with random marks, and use nested loops to compare adjacent elements.\nIf the current element is greater than the next element, swap their positions using a temporary variable.\nRepeat this process until all marks are sorted from lowest to highest.\nYour program should also count the total number of comparisons and swaps performed during sorting and display the first 20 and last 20 elements of the sorted array.\nAs an additional challenge, optimize your algorithm so that it stops early if no swaps occur during a complete pass.");
+        int[] marks = {78, 34, 90, 12, 56, 45, 88, 23, 67, 41,5, 99, 31, 72, 18, 84, 27, 60, 3, 95,49, 14, 76, 38, 62, 8, 91, 54, 20, 70,43, 11, 86, 29, 58, 1, 97, 35, 65, 16, 82, 47, 6, 73, 25, 89, 52, 10, 68, 40, 93, 22, 57, 4, 79, 33, 100, 15, 61, 46, 2, 87, 30, 74, 19, 96, 50, 9, 63, 37, 81, 24, 55, 7, 92, 42, 17, 69, 32, 85, 13, 98, 44, 26, 71, 0, 59, 36, 83, 21, 64, 48, 94, 28, 77, 39, 66, 12, 90, 5, 91, 26, 62, 98, 33, 69, 4, 40, 76, 11, 71, 6, 42, 78, 13, 49, 85, 20, 56, 92,
+                27, 87, 22, 58, 94, 29, 65, 0, 36, 72,
+                7, 43, 2, 38, 74, 9, 45, 81, 16, 52,
+                88, 23, 59, 18, 54, 90, 25, 61, 97, 32,
+                68, 3, 39, 75, 34, 70, 5, 41, 77, 12,
+                48, 84, 19, 55, 91, 50, 86, 21, 57, 93,
+                28, 64, 100, 35, 71, 6, 66, 1, 37, 73,
+                8, 44, 80, 15, 51, 87, 22, 82, 17, 53,
+                89, 24, 60, 96, 31, 67, 2, 38, 98, 33,
+                69, 4, 40, 76, 11, 47, 83, 18, 54, 13,
+                49, 85, 20, 56, 92, 27, 63, 99, 34, 70,
+                29, 65, 0, 36, 72, 7, 43, 79, 14, 50,
+                86, 45, 81, 16, 52, 88, 23, 59, 95, 30,
+                66, 1, 61, 97, 32, 68, 3, 39, 75, 10,
+                46, 82, 17, 77, 12, 48, 84, 19, 55, 91,
+                26, 62, 98, 33, 93, 28, 64, 100, 35, 71,
+                6, 42, 78, 13, 49, 8, 44, 80, 15, 51,
+                87, 22, 58, 94, 29, 65, 24, 60, 96, 31,
+                67, 2, 38, 74, 9, 45, 81, 40, 76, 11,
+                47, 83, 18, 54, 90, 25, 61, 97, 56, 92,
+                27, 63, 99, 34, 70, 5, 41, 77, 12, 72,
+                7, 43, 79, 14, 50, 86, 21, 57, 93, 28,
+                88, 23, 59, 95, 30, 66, 1, 37, 73, 8,
+                44, 3, 39, 75, 10, 46, 82, 17, 53, 89,
+                24, 60, 19, 55, 91, 26, 62, 98, 33, 69,
+                4, 40, 76, 35, 71, 6, 42, 78, 13, 49,
+                85, 20, 56, 92, 51, 87, 22, 58, 94, 29,
+                65, 0, 36, 72, 7, 67, 2, 38, 74, 9,
+                45, 81, 16, 52, 88, 23, 83, 18, 54, 90,
+                25, 61, 97, 32, 68, 3, 39, 99, 34, 70,
+                5, 41, 77, 12, 48, 84, 19, 55, 14, 50,
+                86, 21, 57, 93, 28, 64, 100, 35, 71, 30,
+                66, 1, 37, 73, 8, 44, 80, 15, 51, 87,
+                46, 82, 17, 53, 89, 24, 60, 96, 31, 67,
+                2, 62, 98, 33, 69, 4, 40, 76, 11, 47,
+                83, 18, 78, 13, 49, 85, 20, 56, 92, 27,
+                63, 99, 34, 94, 29, 65, 0, 36, 72, 7,
+                43, 79, 14, 50, 9, 45, 81, 16, 52, 88,
+                23, 59, 95, 30, 66, 25, 61, 97, 32, 68,
+                3, 39, 75, 10, 46, 82, 41, 77, 12, 48,
+                84, 19, 55, 91, 26, 62, 98, 57, 93, 28,
+                64, 100, 35, 71, 6, 42, 78, 13, 73, 8,
+                44, 80, 15, 51, 87, 22, 58, 94, 29, 89,
+                24, 60, 96, 31, 67, 2, 38, 74, 9, 45,
+                4, 40, 76, 11, 47, 83, 18, 54, 90, 25,
+                61, 20, 56, 92, 27, 63, 99, 34, 70, 5,
+                41, 77, 36, 72, 7, 43, 79, 14, 50, 86,
+                21, 57, 93, 52, 88, 23, 59, 95, 30, 66,
+                1, 37, 73, 8, 68, 3, 39, 75, 10, 46,
+                82, 17, 53, 89, 24, 84, 19, 55, 91, 26,
+                62, 98, 33, 69, 4, 40, 100, 35, 71, 6,
+                42, 78, 13, 49, 85, 20, 56, 15, 51, 87,
+                22, 58, 94, 29, 65, 0, 36, 72, 31, 67,
+                2, 38, 74, 9, 45, 81, 16, 52, 88, 47,
+                83, 18, 54, 90, 25, 61, 97, 32, 68, 3,
+                63, 99, 34, 70, 5, 41, 77, 12, 48, 84,
+                19, 79, 14, 50, 86, 21, 57, 93, 28, 64,
+                100, 35, 95, 30, 66, 1, 37, 73, 8, 44,
+                80, 15, 51, 10, 46, 82, 17, 53, 89, 24,
+                60, 96, 31, 67, 26, 62, 98, 33, 69, 4,
+                40, 76, 11, 47, 83, 42, 78, 13, 49, 85,
+                20, 56, 92, 27, 63, 99, 58, 94, 29, 65,
+                0, 36, 72, 7, 43, 79, 14, 74, 9, 45,
+                81, 16, 52, 88, 23, 59, 95, 30, 90, 25,
+                61, 97, 32, 68, 3, 39, 75, 10, 46, 5,
+                41, 77, 12, 48, 84, 19, 55, 91, 26, 62,
+                21, 57, 93, 28, 64, 100, 35, 71, 6, 42,
+                78, 37, 73, 8, 44, 80, 15, 51, 87, 22,
+                58, 94, 53, 89, 24, 60, 96, 31, 67, 2,
+                38, 74, 9, 69, 4, 40, 76, 11, 47, 83,
+                18, 54, 90, 25, 85, 20, 56, 92, 27, 63,
+                99, 34, 70, 5, 41, 0, 36, 72, 7, 43,
+                79, 14, 50, 86, 21, 57, 16, 52, 88, 23,
+                59, 95, 30, 66, 1, 37, 73, 32, 68, 3,
+                39, 75, 10, 46, 82, 17, 53, 89, 48, 84,
+                19, 55, 91, 26, 62, 98, 33, 69, 4, 64,
+                100, 35, 71, 6, 42, 78, 13, 49, 85, 20,
+                80, 15, 51, 87, 22, 58, 94, 29, 65, 0,
+                36, 96, 31, 67, 2, 38, 74, 9, 45, 81,
+                16, 52, 11, 47, 83, 18, 54, 90, 25, 61,
+                97, 32, 68, 27, 63, 99, 34, 70, 5, 41,
+                77, 12, 48, 84, 43, 79, 14, 50, 86, 21,
+                57, 93, 28, 64, 100, 59, 95, 30, 66, 1,
+                37, 73, 8, 44, 80, 15, 75, 10, 46, 82,
+                17, 53, 89, 24, 60, 96, 31, 91, 26, 62,
+                98, 33, 69, 4, 40, 76, 11, 47, 6, 42,
+                78, 13, 49, 85, 20, 56, 92, 27, 63, 22,
+                58, 94, 29, 65, 0, 36, 72, 7, 43, 79,
+                38, 74, 9, 45, 81, 16, 52, 88, 23, 59
+        };
+        printing(marks);
+        bubble_sort(marks);
+        printing(marks);
     }
 }
